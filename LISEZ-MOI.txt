@@ -1,0 +1,5 @@
+PAROLE PRO V2 — première maquette
+
+Pour visualiser : double-cliquez sur index.html. Microsoft Edge ouvrira la maquette.
+
+Important : cette version est une démonstration statique. Elle n'est pas encore publiée sur Internet et ne contient pas de vrais comptes utilisateurs, de coach IA connecté, de sauvegarde des progrès ni de paiement Orange Money/Wave.
