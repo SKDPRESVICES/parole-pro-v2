@@ -14,4 +14,15 @@
 <section class="panel" id="offre"><span class="tag">OFFRE ENVISAGÉE</span><h2 class="heading">5 000 FCFA / mois</h2><p>Abonnement mensuel envisagé pour accéder aux formations et aux outils d'entraînement.</p><p><b>Paiement prévu :</b> Orange Money et Wave.</p><p class="muted">Les paiements ne sont pas encore activés. Cette maquette ne crée pas de comptes, ne sauvegarde pas les progrès et n'utilise pas encore une IA connectée.</p></section></main>
 <footer><b>SKD- PRÈSVICES</b><br>PAROLE PRO V2 — Votre voix, votre confiance, votre impact.<br>Contact : 774476179 / 768620395</footer>
 <script>function generer(){let s=document.getElementById('sujet').value.trim(),p=document.getElementById('public').value.trim(),d=document.getElementById('duree').value,o=document.getElementById('sortie');o.hidden=false;if(!s||!p){o.textContent='Veuillez renseigner le sujet et le public.';return;}o.textContent='TRAME PROPOSÉE\n\n1. ACCROCHE : ouvrez avec une question, une histoire ou un fait marquant en lien avec « '+s+' ».\n\n2. INTRODUCTION : saluez '+p+', présentez-vous brièvement et annoncez votre objectif.\n\n3. DÉVELOPPEMENT : présentez trois idées principales. Pour chacune, donnez une explication et un exemple concret.\n\n4. CONCLUSION : rappelez votre message essentiel et terminez par une formule mémorable ou un appel à l’action.\n\nDurée visée : '+d+'.\nConseil : répétez à voix haute, chronométrez-vous et faites des pauses.\n\nCeci est un outil de démonstration, pas encore le coach IA final.';}</script>
-</body></html>
+</body>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+const SUPABASE_URL = "COLLEZ_ICI_VOTRE_URL";
+const SUPABASE_PUBLISHABLE_KEY = "COLLEZ_ICI_VOTRE_CLE_PUBLISHABLE";
+
+const supabaseClient = window.supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_PUBLISHABLE_KEY
+);
+</script>
+</html>
