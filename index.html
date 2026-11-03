@@ -42,5 +42,44 @@ const supabaseClient = window.supabase.createClient(
 
   <p id="message-inscription"></p>
 </section>
+<script>
+document.getElementById("inscrire").addEventListener("click", async function () {
+
+  const nom = document.getElementById("nom").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const password = document.getElementById("password").value;
+  const message = document.getElementById("message-inscription");
+
+  message.textContent = "";
+
+  if (!nom || !email || !password) {
+    message.textContent = "Veuillez remplir tous les champs.";
+    return;
+  }
+
+  if (password.length < 6) {
+    message.textContent = "Le mot de passe doit contenir au moins 6 caractères.";
+    return;
+  }
+
+  const { data, error } = await supabaseClient.auth.signUp({
+    email: email,
+    password: password,
+    options: {
+      data: {
+        full_name: nom
+      }
+    }
+  });
+
+  if (error) {
+    message.textContent = "Erreur : " + error.message;
+    return;
+  }
+
+  message.textContent = "Inscription réussie ! Consultez votre boîte e-mail pour confirmer votre adresse.";
+
+});
+</script>  
 </body>
 </html>
