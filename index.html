@@ -56,6 +56,71 @@ const supabaseClient = window.supabase.createClient(
 
   <p id="message-connexion"></p>
 </section>
+  <section class="panel" id="tableau-bord" hidden>
+  <span class="tag">ESPACE PERSONNEL</span>
+
+  <h2 class="heading">
+    Bienvenue dans PAROLE PRO V2
+  </h2>
+
+  <p id="nom-apprenant">
+    Votre espace de formation
+  </p>
+
+  <h3>Mon parcours de formation</h3>
+
+  <div class="grid">
+
+    <article class="card">
+      <span class="tag">MODULE 01</span>
+      <h3>Les fondamentaux</h3>
+      <p>Construire un message clair et structuré.</p>
+      <p>Progression : 0 %</p>
+    </article>
+
+    <article class="card">
+      <span class="tag">MODULE 02</span>
+      <h3>Voix et présence</h3>
+      <p>Améliorer sa voix, sa posture et son regard.</p>
+      <p>Progression : 0 %</p>
+    </article>
+
+    <article class="card">
+      <span class="tag">MODULE 03</span>
+      <h3>Discours convaincant</h3>
+      <p>Apprendre à convaincre son auditoire.</p>
+      <p>Progression : 0 %</p>
+    </article>
+
+    <article class="card">
+      <span class="tag">MODULE 04</span>
+      <h3>Trac et improvisation</h3>
+      <p>Maîtriser son stress et improviser.</p>
+      <p>Progression : 0 %</p>
+    </article>
+
+  </div>
+
+  <h3>Ma situation financière</h3>
+  <p>Inscription : 5 000 FCFA</p>
+  <p>Mensualité : 5 000 FCFA</p>
+  <p id="statut-paiement">
+    Situation des paiements : à vérifier.
+  </p>
+
+  <button class="btn" id="deconnexion">
+    Se déconnecter
+  </button>
+</section>
+  <script>
+document.getElementById("deconnexion").addEventListener("click", async function () {
+  await supabaseClient.auth.signOut();
+
+  document.getElementById("tableau-bord").hidden = true;
+  document.getElementById("inscription").hidden = false;
+  document.getElementById("connexion").hidden = false;
+});
+</script>
 <script>
 document.getElementById("inscrire").addEventListener("click", async function () {
 
@@ -118,7 +183,15 @@ document.getElementById("inscrire").addEventListener("click", async function () 
     return;
   }
 
-  message.textContent = "Connexion réussie ! Bienvenue dans PAROLE PRO V2.";
+    document.getElementById("nom-apprenant").textContent =
+    "Bienvenue, " + (
+      data.user.user_metadata.full_name ||
+      email
+    );
+
+  document.getElementById("inscription").hidden = true;
+  document.getElementById("connexion").hidden = true;
+  document.getElementById("tableau-bord").hidden = false;
 
 });
 </script>  
