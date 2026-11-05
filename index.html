@@ -121,8 +121,30 @@ document.getElementById("deconnexion").addEventListener("click", async function 
   document.getElementById("connexion").hidden = false;
 });
 </script>
-<script>
-document.getElementById("inscrire").addEventListener("click", async function () {
+
+<label for="password">Mot de passe personnel</label>
+
+<div style="display:flex; gap:8px; align-items:center;">
+  <input
+    id="password"
+    type="password"
+    placeholder="Choisissez un mot de passe"
+    minlength="6"
+    style="flex:1;"
+  >
+
+  <button
+    type="button"
+    onclick="const p=document.getElementById('password'); p.type=p.type==='password'?'text':'password'; this.textContent=p.type==='password'?'Afficher':'Masquer';"
+  >Afficher</button>
+</div>
+
+<small>
+  Créez un mot de passe personnel pour PAROLE PRO V2.
+  Il doit être différent du mot de passe de votre adresse e-mail
+  et contenir au moins 6 caractères.
+</small>
+
 
   const nom = document.getElementById("nom").value.trim();
   const email = document.getElementById("email").value.trim();
