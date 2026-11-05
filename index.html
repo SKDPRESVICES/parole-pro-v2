@@ -66,10 +66,11 @@ document.getElementById("inscrire").addEventListener("click", async function () 
     email: email,
     password: password,
     options: {
-      data: {
-        full_name: nom
-      }
-    }
+  emailRedirectTo: "https://skdpresvices.github.io/parole-pro-v2/",
+  data: {
+    full_name: nom
+  }
+}
   });
 
   if (error) {
