@@ -27,100 +27,14 @@ const supabaseClient = window.supabase.createClient(
 </script>
  <section class="panel" id="inscription">
   <span class="tag">ESPACE APPRENANT</span>
-  <h2 class="heading">Créer mon compte</h2>
+ 
+<h2 class="heading">Créer mon compte</h2>
 
-  <label for="nom">Nom complet</label>
-  <input id="nom" type="text" placeholder="Votre nom complet">
+<label for="nom">Nom complet</label>
+<input id="nom" type="text" placeholder="Votre nom complet">
 
-  <label for="email">Adresse e-mail</label>
-  <input id="email" type="email" placeholder="Votre adresse e-mail">
-
-  <label for="password">Mot de passe</label>
-  <input id="password" type="password" placeholder="Choisissez un mot de passe">
-
-  <button class="btn" id="inscrire">Créer mon compte</button>
-
-  <p id="message-inscription"></p>
-</section>
-  <section class="panel" id="connexion">
-  <span class="tag">ESPACE APPRENANT</span>
-  <h2 class="heading">Se connecter</h2>
-
-  <label for="email-connexion">Adresse e-mail</label>
-  <input id="email-connexion" type="email" placeholder="Votre adresse e-mail">
-
-  <label for="password-connexion">Mot de passe</label>
-  <input id="password-connexion" type="password" placeholder="Votre mot de passe">
-
-  <button class="btn" id="connecter">Se connecter</button>
-
-  <p id="message-connexion"></p>
-</section>
-  <section class="panel" id="tableau-bord" hidden>
-  <span class="tag">ESPACE PERSONNEL</span>
-
-  <h2 class="heading">
-    Bienvenue dans PAROLE PRO V2
-  </h2>
-
-  <p id="nom-apprenant">
-    Votre espace de formation
-  </p>
-
-  <h3>Mon parcours de formation</h3>
-
-  <div class="grid">
-
-    <article class="card">
-      <span class="tag">MODULE 01</span>
-      <h3>Les fondamentaux</h3>
-      <p>Construire un message clair et structuré.</p>
-      <p>Progression : 0 %</p>
-    </article>
-
-    <article class="card">
-      <span class="tag">MODULE 02</span>
-      <h3>Voix et présence</h3>
-      <p>Améliorer sa voix, sa posture et son regard.</p>
-      <p>Progression : 0 %</p>
-    </article>
-
-    <article class="card">
-      <span class="tag">MODULE 03</span>
-      <h3>Discours convaincant</h3>
-      <p>Apprendre à convaincre son auditoire.</p>
-      <p>Progression : 0 %</p>
-    </article>
-
-    <article class="card">
-      <span class="tag">MODULE 04</span>
-      <h3>Trac et improvisation</h3>
-      <p>Maîtriser son stress et improviser.</p>
-      <p>Progression : 0 %</p>
-    </article>
-
-  </div>
-
-  <h3>Ma situation financière</h3>
-  <p>Inscription : 5 000 FCFA</p>
-  <p>Mensualité : 5 000 FCFA</p>
-  <p id="statut-paiement">
-    Situation des paiements : à vérifier.
-  </p>
-
-  <button class="btn" id="deconnexion">
-    Se déconnecter
-  </button>
-</section>
-  <script>
-document.getElementById("deconnexion").addEventListener("click", async function () {
-  await supabaseClient.auth.signOut();
-
-  document.getElementById("tableau-bord").hidden = true;
-  document.getElementById("inscription").hidden = false;
-  document.getElementById("connexion").hidden = false;
-});
-</script>
+<label for="email">Adresse e-mail</label>
+<input id="email" type="email" placeholder="Votre adresse e-mail">
 
 <label for="password">Mot de passe personnel</label>
 
@@ -128,8 +42,7 @@ document.getElementById("deconnexion").addEventListener("click", async function 
   <input
     id="password"
     type="password"
-    placeholder="Choisissez un mot de passe"
-    minlength="6"
+    placeholder="Créer votre mot de passe"
     style="flex:1;"
   >
 
@@ -145,7 +58,42 @@ document.getElementById("deconnexion").addEventListener("click", async function 
   et contenir au moins 6 caractères.
 </small>
 
+<button class="btn" id="inscrire">Créer mon compte</button>
 
+  <p id="message-inscription"></p>
+</section>
+  <section class="panel" id="connexion">
+  <span class="tag">ESPACE APPRENANT</span>
+  <h2 class="heading">Se connecter</h2>
+
+  <label for="email-connexion">Adresse e-mail</label>
+  <input id="email-connexion" type="email" placeholder="Votre adresse e-mail">
+
+<label for="password">Mot de passe personnel</label>
+
+<div style="display:flex; gap:8px; align-items:center;">
+  <input
+    id="password"
+    type="password"
+    placeholder="Choisissez un mot de passe"
+    minlength="6"
+    autocomplete="new-password"
+    style="flex:1;"
+  >
+
+  <button
+    type="button"
+    onclick="const p=document.getElementById('password'); p.type=p.type==='password'?'text':'password'; this.textContent=p.type==='password'?'Afficher':'Masquer';"
+  >Afficher</button>
+</div>
+
+<small>
+  Créez un mot de passe personnel pour PAROLE PRO V2.
+  Il doit être différent du mot de passe de votre adresse e-mail
+  et contenir au moins 6 caractères.
+</small>
+
+ 
   const nom = document.getElementById("nom").value.trim();
   const email = document.getElementById("email").value.trim();
   const password = document.getElementById("password").value;
