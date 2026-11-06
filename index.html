@@ -1,174 +1,804 @@
-<!doctype html>
-<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#10243d"><title>PAROLE PRO V2 — SKD- PRÈSVICES</title>
-<style>
-:root{--navy:#10243d;--gold:#c8a45d;--ink:#1d2939;--muted:#667085;--bg:#f5f7fa}*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;color:var(--ink);background:var(--bg);line-height:1.55}header{background:var(--navy);color:#fff;padding:18px 6%;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}.brand{font-weight:800;letter-spacing:.07em}.brand span{color:var(--gold)}nav{display:flex;gap:18px;flex-wrap:wrap}nav a{color:white;text-decoration:none;font-size:14px}.hero{background:linear-gradient(120deg,#10243d,#244766);color:#fff;padding:65px 7%}.hero small,.tag{color:var(--gold);font-weight:bold;letter-spacing:.12em}.hero h1{font-size:clamp(32px,5vw,54px);line-height:1.1;max-width:780px;margin:14px 0}.hero p{max-width:650px;font-size:18px;color:#e6ebf1}.btn{display:inline-block;background:var(--gold);color:#142238;padding:13px 20px;border:0;border-radius:7px;font-weight:bold;text-decoration:none;cursor:pointer}main{max-width:1100px;margin:auto;padding:35px 5%}.heading{color:var(--navy);font-size:26px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}.card,.panel{background:white;border:1px solid #e3e8ef;border-radius:12px;padding:22px;box-shadow:0 5px 18px #10243d0b}.card h3{color:var(--navy)}.panel{margin:28px 0}.tag{display:inline-block;background:#f7f0e2;padding:4px 9px;border-radius:20px;font-size:11px;color:#76561a}label{display:block;font-weight:bold;margin:12px 0 5px}input,select{width:100%;padding:12px;border:1px solid #cbd5e1;border-radius:7px;font:inherit}.result{white-space:pre-wrap;background:#f5f7fa;border-left:4px solid var(--gold);padding:14px;margin-top:15px}.muted{font-size:13px;color:var(--muted)}footer{text-align:center;background:var(--navy);color:#e6ebf1;padding:26px}footer b{color:var(--gold)}
-</style></head><body>
-<header><div class="brand">SKD- <span>PRÈSVICES</span></div><nav><a href="#formations">Formations</a><a href="#coach">Coach de parole</a><a href="#offre">Abonnement</a></nav></header>
-<section class="hero"><small>PAROLE PRO V2</small><h1>Votre voix, votre confiance, votre impact.</h1><p>Apprenez à structurer vos idées, à vous exprimer avec assurance et à convaincre votre public.</p><a class="btn" href="#formations">Découvrir le parcours</a></section>
-<main><h2 class="heading" id="formations">Un parcours pour progresser</h2><div class="grid">
-<article class="card"><span class="tag">MODULE 01</span><h3>Les fondamentaux</h3><p>Identifier son objectif, connaître son public et construire un message clair.</p></article>
-<article class="card"><span class="tag">MODULE 02</span><h3>Voix et présence</h3><p>Travailler respiration, articulation, regard, posture et rythme.</p></article>
-<article class="card"><span class="tag">MODULE 03</span><h3>Discours convaincant</h3><p>Organiser ses arguments, illustrer ses idées et captiver son auditoire.</p></article>
-<article class="card"><span class="tag">MODULE 04</span><h3>Trac et improvisation</h3><p>Gérer le stress et répondre avec méthode aux questions.</p></article></div>
-<section class="panel" id="coach"><span class="tag">OUTIL DE DÉMONSTRATION</span><h2 class="heading">Préparez votre intervention</h2><p>Renseignez ces quelques éléments pour obtenir une trame de discours. Cette première démonstration fonctionne sans compte ni service externe.</p><label for="sujet">Sujet de votre intervention</label><input id="sujet" placeholder="Ex. : discours pour une cérémonie scolaire"><label for="public">Votre public</label><input id="public" placeholder="Ex. : élèves, parents, responsables"><label for="duree">Durée prévue</label><select id="duree"><option>2 à 3 minutes</option><option>5 minutes</option><option>10 minutes</option><option>15 minutes ou plus</option></select><p><button class="btn" onclick="generer()">Générer une trame</button></p><div class="result" id="sortie" hidden></div></section>
-<section class="panel" id="offre"><span class="tag">OFFRE ENVISAGÉE</span><h2 class="heading">5 000 FCFA / mois</h2><p>Abonnement mensuel envisagé pour accéder aux formations et aux outils d'entraînement.</p><p><b>Paiement prévu :</b> Orange Money et Wave.</p><p class="muted">Les paiements ne sont pas encore activés. Cette maquette ne crée pas de comptes, ne sauvegarde pas les progrès et n'utilise pas encore une IA connectée.</p></section></main>
-<footer><b>SKD- PRÈSVICES</b><br>PAROLE PRO V2 — Votre voix, votre confiance, votre impact.<br>Contact : 774476179 / 768620395</footer>
-<script>function generer(){let s=document.getElementById('sujet').value.trim(),p=document.getElementById('public').value.trim(),d=document.getElementById('duree').value,o=document.getElementById('sortie');o.hidden=false;if(!s||!p){o.textContent='Veuillez renseigner le sujet et le public.';return;}o.textContent='TRAME PROPOSÉE\n\n1. ACCROCHE : ouvrez avec une question, une histoire ou un fait marquant en lien avec « '+s+' ».\n\n2. INTRODUCTION : saluez '+p+', présentez-vous brièvement et annoncez votre objectif.\n\n3. DÉVELOPPEMENT : présentez trois idées principales. Pour chacune, donnez une explication et un exemple concret.\n\n4. CONCLUSION : rappelez votre message essentiel et terminez par une formule mémorable ou un appel à l’action.\n\nDurée visée : '+d+'.\nConseil : répétez à voix haute, chronométrez-vous et faites des pauses.\n\nCeci est un outil de démonstration, pas encore le coach IA final.';}</script>
 
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#10243d">
+<title>PAROLE PRO V2 — SKD- PRÈSVICES</title>
+
+<style>
+:root {
+  --navy: #10243d;
+  --gold: #c8a45d;
+  --ink: #1d2939;
+  --muted: #667085;
+  --bg: #f5f7fa;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  color: var(--ink);
+  background: var(--bg);
+  line-height: 1.55;
+}
+
+header {
+  background: var(--navy);
+  color: white;
+  padding: 18px 6%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.brand {
+  font-weight: 800;
+  letter-spacing: .07em;
+}
+
+.brand span, footer b { color: var(--gold); }
+
+nav {
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.hero {
+  background: linear-gradient(120deg,#10243d,#244766);
+  color: white;
+  padding: 65px 7%;
+}
+
+.hero small, .tag {
+  color: var(--gold);
+  font-weight: bold;
+  letter-spacing: .12em;
+}
+
+.hero h1 {
+  font-size: clamp(32px,5vw,54px);
+  line-height: 1.1;
+  max-width: 780px;
+  margin: 14px 0;
+}
+
+.hero p {
+  max-width: 650px;
+  font-size: 18px;
+  color: #e6ebf1;
+}
+
+.btn {
+  display: inline-block;
+  background: var(--gold);
+  color: #142238;
+  padding: 13px 20px;
+  border: 0;
+  border-radius: 7px;
+  font-weight: bold;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.btn:disabled {
+  opacity: .6;
+  cursor: wait;
+}
+
+main {
+  max-width: 1100px;
+  margin: auto;
+  padding: 35px 5%;
+}
+
+.heading {
+  color: var(--navy);
+  font-size: 26px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+  gap: 18px;
+}
+
+.card, .panel {
+  background: white;
+  border: 1px solid #e3e8ef;
+  border-radius: 12px;
+  padding: 22px;
+  box-shadow: 0 5px 18px #10243d0b;
+}
+
+.card h3 { color: var(--navy); }
+
+.panel { margin: 28px 0; }
+
+.tag {
+  display: inline-block;
+  background: #f7f0e2;
+  padding: 4px 9px;
+  border-radius: 20px;
+  font-size: 11px;
+  color: #76561a;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  margin: 12px 0 5px;
+}
+
+input, select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 7px;
+  font: inherit;
+}
+
+.result {
+  white-space: pre-wrap;
+  background: #f5f7fa;
+  border-left: 4px solid var(--gold);
+  padding: 14px;
+  margin-top: 15px;
+}
+
+.muted {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.message {
+  margin-top: 12px;
+  font-size: 14px;
+  overflow-wrap: anywhere;
+}
+
+.password-row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.password-row input { flex: 1; }
+
+.password-row button {
+  padding: 10px;
+  border: 1px solid #cbd5e1;
+  border-radius: 7px;
+  background: white;
+  cursor: pointer;
+}
+
+.module {
+  border-left: 4px solid var(--gold);
+  margin: 14px 0;
+}
+
+footer {
+  text-align: center;
+  background: var(--navy);
+  color: #e6ebf1;
+  padding: 26px;
+}
+
+[hidden] { display: none !important; }
+
+@media(max-width:600px) {
+  .password-row { align-items: stretch; }
+  .password-row button { min-width: 85px; }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="brand">SKD- <span>PRÈSVICES</span></div>
+  <nav>
+    <a href="#formations">Formations</a>
+    <a href="#coach">Coach de parole</a>
+    <a href="#offre">Abonnement</a>
+    <a href="#inscription">Mon compte</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <small>PAROLE PRO V2</small>
+  <h1>Votre voix, votre confiance, votre impact.</h1>
+  <p>
+    Apprenez à structurer vos idées, à vous exprimer
+    avec assurance et à convaincre votre public.
+  </p>
+  <a class="btn" href="#formations">Découvrir le parcours</a>
+</section>
+
+<main>
+
+<h2 class="heading" id="formations">Un parcours pour progresser</h2>
+
+<div class="grid">
+  <article class="card">
+    <span class="tag">MODULE 01</span>
+    <h3>Les fondamentaux</h3>
+    <p>Identifier son objectif, connaître son public et construire un message clair.</p>
+  </article>
+
+  <article class="card">
+    <span class="tag">MODULE 02</span>
+    <h3>Voix et présence</h3>
+    <p>Travailler respiration, articulation, regard, posture et rythme.</p>
+  </article>
+
+  <article class="card">
+    <span class="tag">MODULE 03</span>
+    <h3>Discours convaincant</h3>
+    <p>Organiser ses arguments, illustrer ses idées et captiver son auditoire.</p>
+  </article>
+
+  <article class="card">
+    <span class="tag">MODULE 04</span>
+    <h3>Trac et improvisation</h3>
+    <p>Gérer le stress et répondre avec méthode aux questions.</p>
+  </article>
+</div>
+
+
+<!-- COACH DE PAROLE -->
+
+<section class="panel" id="coach">
+  <span class="tag">OUTIL DE DÉMONSTRATION</span>
+  <h2 class="heading">Préparez votre intervention</h2>
+
+  <p>
+    Renseignez ces quelques éléments pour obtenir une trame de discours.
+  </p>
+
+  <label for="sujet">Sujet de votre intervention</label>
+  <input id="sujet" placeholder="Ex. : discours pour une cérémonie scolaire">
+
+  <label for="public">Votre public</label>
+  <input id="public" placeholder="Ex. : élèves, parents, responsables">
+
+  <label for="duree">Durée prévue</label>
+  <select id="duree">
+    <option>2 à 3 minutes</option>
+    <option>5 minutes</option>
+    <option>10 minutes</option>
+    <option>15 minutes ou plus</option>
+  </select>
+
+  <p>
+    <button class="btn" id="generer" type="button">Générer une trame</button>
+  </p>
+
+  <div class="result" id="sortie" hidden></div>
+</section>
+
+
+<!-- ABONNEMENT -->
+
+<section class="panel" id="offre">
+  <span class="tag">OFFRE PAROLE PRO V2</span>
+  <h2 class="heading">5 000 FCFA / mois</h2>
+
+  <p>
+    Durée pédagogique : 4 mois, à votre propre rythme.
+  </p>
+
+  <p><b>Frais d'inscription :</b> 5 000 FCFA.</p>
+  <p><b>Mensualité :</b> 5 000 FCFA.</p>
+  <p><b>Échéance :</b> le 10 de chaque mois.</p>
+  <p><b>Paiement prévu :</b> Orange Money et Wave.</p>
+
+  <p class="muted">
+    Le paiement électronique et le suivi des mensualités
+    seront activés après le raccordement du système de paiement.
+  </p>
+</section>
+
+
+<!-- INSCRIPTION -->
+
+<section class="panel" id="inscription">
+  <span class="tag">ESPACE APPRENANT</span>
+  <h2 class="heading">Créer mon compte</h2>
+
+  <label for="nom">Nom complet</label>
+  <input id="nom" type="text"
+    placeholder="Votre nom complet"
+    autocomplete="name">
+
+  <label for="email">Adresse e-mail</label>
+  <input id="email" type="email"
+    placeholder="Votre adresse e-mail"
+    autocomplete="email">
+
+  <label for="password-inscription">Mot de passe personnel</label>
+
+  <div class="password-row">
+    <input id="password-inscription"
+      type="password"
+      placeholder="Créer votre mot de passe"
+      minlength="6"
+      autocomplete="new-password">
+
+    <button type="button" id="afficher-inscription">
+      Afficher
+    </button>
+  </div>
+
+  <small>
+    Votre mot de passe doit contenir au moins 6 caractères.
+    Il doit être différent de celui de votre adresse e-mail.
+  </small>
+
+  <p>
+    <button class="btn" id="inscrire" type="button">
+      Créer mon compte
+    </button>
+  </p>
+
+  <p class="message" id="message-inscription" role="status"></p>
+</section>
+
+
+<!-- CONNEXION -->
+
+<section class="panel" id="connexion">
+  <span class="tag">ESPACE APPRENANT</span>
+  <h2 class="heading">Se connecter</h2>
+
+  <label for="email-connexion">Adresse e-mail</label>
+  <input id="email-connexion" type="email"
+    placeholder="Votre adresse e-mail"
+    autocomplete="email">
+
+  <label for="password-connexion">Mot de passe personnel</label>
+
+  <div class="password-row">
+    <input id="password-connexion"
+      type="password"
+      placeholder="Votre mot de passe"
+      autocomplete="current-password">
+
+    <button type="button" id="afficher-connexion">
+      Afficher
+    </button>
+  </div>
+
+  <p>
+    <button class="btn" id="connecter" type="button">
+      Se connecter
+    </button>
+  </p>
+
+  <p class="message" id="message-connexion" role="status"></p>
+</section>
+
+
+<!-- TABLEAU DE BORD -->
+
+<section class="panel" id="tableau-bord" hidden>
+  <span class="tag">ESPACE PERSONNEL</span>
+
+  <h2 class="heading">Mon tableau de bord</h2>
+
+  <h3 id="nom-apprenant">Bienvenue</h3>
+
+  <p>
+    Vous êtes connecté à votre espace apprenant PAROLE PRO V2.
+  </p>
+
+  <div class="panel">
+    <h3>Mon parcours</h3>
+    <p>Durée pédagogique : 4 mois.</p>
+    <p>Progression : à suivre.</p>
+    <p class="muted" id="statut-paiement">
+      Le suivi des paiements sera activé après
+      le raccordement de la base de données.
+    </p>
+  </div>
+
+  <h3>Mes quatre modules</h3>
+
+  <div class="panel module">
+    <h3>Module 01 – Les fondamentaux</h3>
+    <p>Découvrir les bases de la prise de parole en public.</p>
+  </div>
+
+  <div class="panel module">
+    <h3>Module 02 – Voix et présence</h3>
+    <p>Maîtriser sa voix, sa posture et son langage corporel.</p>
+  </div>
+
+  <div class="panel module">
+    <h3>Module 03 – Discours convaincant</h3>
+    <p>Construire un discours clair et persuasif.</p>
+  </div>
+
+  <div class="panel module">
+    <h3>Module 04 – Trac et improvisation</h3>
+    <p>Gérer le stress et prendre la parole avec assurance.</p>
+  </div>
+
+  <p class="message" id="message-tableau" role="status"></p>
+
+  <button class="btn" id="deconnexion" type="button">
+    Se déconnecter
+  </button>
+</section>
+
+</main>
+
+
+<footer>
+  <b>SKD- PRÈSVICES</b><br>
+  PAROLE PRO V2 — Votre voix, votre confiance, votre impact.<br>
+  Contact : 774476179 / 768620395
+</footer>
+
+
+<!-- BIBLIOTHEQUE SUPABASE -->
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 <script>
+
+// CONFIGURATION SUPABASE
 const SUPABASE_URL = "https://dssnyhqpumwnflhqpupa.supabase.co";
-const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_ordeMY6yJOHVtH7eCpZ92A_3PqaUBJB";
+
+const SUPABASE_PUBLISHABLE_KEY =
+"sb_publishable_ordeMY6yJOHVtH7eCpZ92A_3PqaUBJB";
 
 const supabaseClient = window.supabase.createClient(
   SUPABASE_URL,
   SUPABASE_PUBLISHABLE_KEY
 );
-</script>
- <section class="panel" id="inscription">
-  <span class="tag">ESPACE APPRENANT</span>
- 
-<h2 class="heading">Créer mon compte</h2>
 
-<label for="nom">Nom complet</label>
-<input id="nom" type="text" placeholder="Votre nom complet">
 
-<label for="email">Adresse e-mail</label>
-<input id="email" type="email" placeholder="Votre adresse e-mail">
+// GENERATEUR DE TRAME
+document.getElementById("generer").addEventListener("click", function () {
 
-<label for="password">Mot de passe personnel</label>
+  const sujet = document.getElementById("sujet").value.trim();
+  const publicCible = document.getElementById("public").value.trim();
+  const duree = document.getElementById("duree").value;
+  const sortie = document.getElementById("sortie");
 
-<div style="display:flex; gap:8px; align-items:center;">
-  <input
-    id="password"
-    type="password"
-    placeholder="Créer votre mot de passe"
-    style="flex:1;"
-  >
+  sortie.hidden = false;
 
- <button
-  type="button"
-  onclick="const p=document.getElementById('password-connexion'); p.type=p.type==='password'?'text':'password'; this.textContent=p.type==='password'?'Afficher':'Masquer';"
->Afficher</button>
-</div>
-
-<small>
-  Créez un mot de passe personnel pour PAROLE PRO V2.
-  Il doit être différent du mot de passe de votre adresse e-mail
-  et contenir au moins 6 caractères.
-</small>
-<button class="btn" id="connecter" type="button">
-  Se connecter
-</button>
-
-<p id="message-connexion"></p>
-</section>
-<button class="btn" id="inscrire">Créer mon compte</button>
-
-  <p id="message-inscription"></p>
-</section>
-  <section class="panel" id="connexion">
-  <span class="tag">ESPACE APPRENANT</span>
-  <h2 class="heading">Se connecter</h2>
-
-  <label for="email-connexion">Adresse e-mail</label>
-  <input id="email-connexion" type="email" placeholder="Votre adresse e-mail">
-
-<label for="password">Mot de passe personnel</label>
-
-<div style="display:flex; gap:8px; align-items:center;">
-  <input
-    id="password-connexion"
-    type="password"
-    placeholder="Choisissez un mot de passe"
-    minlength="6"
-   autocomplete="current-password"
-    style="flex:1;"
-  >
-
-  <button
-    type="button"
-    onclick="const p=document.getElementById('password'); p.type=p.type==='password'?'text':'password'; this.textContent=p.type==='password'?'Afficher':'Masquer';"
-  >Afficher</button>
-</div>
-
-<small>
-  Créez un mot de passe personnel pour PAROLE PRO V2.
-  Il doit être différent du mot de passe de votre adresse e-mail
-  et contenir au moins 6 caractères.
-</small>
-
- 
-  const nom = document.getElementById("nom").value.trim();
-  const email = document.getElementById("email").value.trim();
-  const password = document.getElementById('password-connexion')
-  const message = document.getElementById("message-inscription");
-
-  message.textContent = "";
-
-  if (!nom || !email || !password) {
-    message.textContent = "Veuillez remplir tous les champs.";
+  if (!sujet || !publicCible) {
+    sortie.textContent = "Veuillez renseigner le sujet et le public.";
     return;
   }
 
-  if (password.length < 6) {
-    message.textContent = "Le mot de passe doit contenir au moins 6 caractères.";
-    return;
-  }
+  sortie.textContent =
+`TRAME PROPOSÉE
 
-  const { data, error } = await supabaseClient.auth.signUp({
-    email: email,
-    password: password,
-    options: {
-  emailRedirectTo: "https://skdpresvices.github.io/parole-pro-v2/",
-  data: {
-    full_name: nom
-  }
-}
-  });
+1. ACCROCHE
+Ouvrez avec une question, une histoire ou un fait marquant en lien avec : ${sujet}.
 
-  if (error) {
-    message.textContent = "Erreur : " + error.message;
-    return;
-  }
+2. INTRODUCTION
+Saluez ${publicCible}, présentez-vous brièvement et annoncez votre objectif.
 
-  message.textContent = "Inscription réussie ! Consultez votre boîte e-mail pour confirmer votre adresse.";
+3. DÉVELOPPEMENT
+Présentez trois idées principales. Pour chacune, donnez une explication et un exemple concret.
+
+4. CONCLUSION
+Rappelez votre message essentiel et terminez par une formule mémorable ou un appel à l'action.
+
+Durée visée : ${duree}.
+
+Conseil : répétez à voix haute, chronométrez-vous et faites des pauses.`;
 
 });
-  document.getElementById("connecter").addEventListener("click", async function () {
 
-  const email = document.getElementById("email-connexion").value.trim();
- const password = document.getElementById("password-connexion").value;
-  const message = document.getElementById("message-connexion");
 
-  message.textContent = "";
+// ELEMENTS DE LA PAGE
+const inscription = document.getElementById("inscription");
+const connexion = document.getElementById("connexion");
+const tableau = document.getElementById("tableau-bord");
 
-  if (!email || !password) {
-    message.textContent = "Veuillez remplir tous les champs.";
-    return;
-  }
+const messageInscription =
+document.getElementById("message-inscription");
 
-  const { data, error } = await supabaseClient.auth.signInWithPassword({
-    email: email,
-    password: password
+const messageConnexion =
+document.getElementById("message-connexion");
+
+const messageTableau =
+document.getElementById("message-tableau");
+
+
+// AFFICHAGE DES MOTS DE PASSE
+function configurerAffichage(champId, boutonId) {
+
+  const champ = document.getElementById(champId);
+  const bouton = document.getElementById(boutonId);
+
+  bouton.addEventListener("click", function () {
+
+    champ.type =
+      champ.type === "password" ? "text" : "password";
+
+    bouton.textContent =
+      champ.type === "password" ? "Afficher" : "Masquer";
+
   });
 
-  if (error) {
-    message.textContent = "Erreur : " + error.message;
-    return;
-  }
+}
+
+configurerAffichage(
+  "password-inscription",
+  "afficher-inscription"
+);
+
+configurerAffichage(
+  "password-connexion",
+  "afficher-connexion"
+);
+
+
+// AFFICHAGE DU TABLEAU DE BORD
+function afficherTableau(session) {
+
+  if (session && session.user) {
+
+    const utilisateur = session.user;
+
+    const nom =
+      utilisateur.user_metadata?.full_name ||
+      utilisateur.email ||
+      "Apprenant";
 
     document.getElementById("nom-apprenant").textContent =
-    "Bienvenue, " + (
-      data.user.user_metadata.full_name ||
-      email
-    );
+      "Bienvenue, " + nom;
 
-  document.getElementById("inscription").hidden = true;
-  document.getElementById("connexion").hidden = true;
-  document.getElementById("tableau-bord").hidden = false;
+    inscription.hidden = true;
+    connexion.hidden = true;
+    tableau.hidden = false;
 
-});
-</script>  
+  } else {
+
+    tableau.hidden = true;
+    inscription.hidden = false;
+    connexion.hidden = false;
+
+  }
+
+}
+
+
+// INSCRIPTION
+document.getElementById("inscrire").addEventListener(
+  "click", async function () {
+
+    messageInscription.textContent = "";
+
+    const nom =
+      document.getElementById("nom").value.trim();
+
+    const email =
+      document.getElementById("email").value.trim();
+
+    const password =
+      document.getElementById("password-inscription").value;
+
+    if (!nom || !email || !password) {
+
+      messageInscription.textContent =
+        "Veuillez remplir tous les champs.";
+
+      return;
+    }
+
+    if (password.length < 6) {
+
+      messageInscription.textContent =
+        "Le mot de passe doit contenir au moins 6 caractères.";
+
+      return;
+    }
+
+    const bouton = this;
+
+    bouton.disabled = true;
+    bouton.textContent = "Inscription en cours...";
+
+    try {
+
+      const { data, error } =
+        await supabaseClient.auth.signUp({
+
+          email: email,
+          password: password,
+
+          options: {
+
+            emailRedirectTo:
+              "https://skdpresvices.github.io/parole-pro-v2/",
+
+            data: {
+              full_name: nom
+            }
+
+          }
+
+        });
+
+      if (error) throw error;
+
+      if (data.session) {
+
+        afficherTableau(data.session);
+
+        messageTableau.textContent =
+          "Votre compte est créé. Bienvenue dans PAROLE PRO V2.";
+
+      } else {
+
+        messageInscription.textContent =
+          "Inscription réussie ! Consultez votre boîte e-mail " +
+          "pour confirmer votre adresse avant de vous connecter.";
+
+      }
+
+    } catch (error) {
+
+      messageInscription.textContent =
+        "Erreur : " + error.message;
+
+    } finally {
+
+      bouton.disabled = false;
+      bouton.textContent = "Créer mon compte";
+
+    }
+
+  }
+);
+
+
+// CONNEXION
+document.getElementById("connecter").addEventListener(
+  "click", async function () {
+
+    messageConnexion.textContent = "";
+
+    const email =
+      document.getElementById("email-connexion").value.trim();
+
+    const password =
+      document.getElementById("password-connexion").value;
+
+    if (!email || !password) {
+
+      messageConnexion.textContent =
+        "Veuillez remplir tous les champs.";
+
+      return;
+    }
+
+    const bouton = this;
+
+    bouton.disabled = true;
+    bouton.textContent = "Connexion en cours...";
+
+    try {
+
+      const { data, error } =
+        await supabaseClient.auth.signInWithPassword({
+
+          email: email,
+          password: password
+
+        });
+
+      if (error) throw error;
+
+      afficherTableau(data.session);
+
+      messageTableau.textContent =
+        "Connexion réussie ! Bienvenue dans PAROLE PRO V2.";
+
+    } catch (error) {
+
+      messageConnexion.textContent =
+        "Erreur : " + error.message;
+
+    } finally {
+
+      bouton.disabled = false;
+      bouton.textContent = "Se connecter";
+
+    }
+
+  }
+);
+
+
+// DECONNEXION
+document.getElementById("deconnexion").addEventListener(
+  "click", async function () {
+
+    this.disabled = true;
+
+    try {
+
+      const { error } =
+        await supabaseClient.auth.signOut();
+
+      if (error) throw error;
+
+      afficherTableau(null);
+
+      messageConnexion.textContent =
+        "Vous êtes déconnecté de votre espace.";
+
+      messageTableau.textContent = "";
+
+    } catch (error) {
+
+      messageTableau.textContent =
+        "Erreur lors de la déconnexion : " + error.message;
+
+    } finally {
+
+      this.disabled = false;
+
+    }
+
+  }
+);
+
+
+// RESTAURATION DE LA SESSION
+async function restaurerSession() {
+
+  try {
+
+    const { data, error } =
+      await supabaseClient.auth.getSession();
+
+    if (error) throw error;
+
+    afficherTableau(data.session);
+
+  } catch (error) {
+
+    console.error("Erreur de restauration de session :", error);
+
+  }
+
+}
+
+restaurerSession();
+
+
+// SUIVI DES CHANGEMENTS DE SESSION
+supabaseClient.auth.onAuthStateChange(
+  function (event, session) {
+
+    afficherTableau(session);
+
+  }
+);
+
+</script>
+
 </body>
 </html>
