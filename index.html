@@ -77,7 +77,7 @@ const supabaseClient = window.supabase.createClient(
     type="password"
     placeholder="Choisissez un mot de passe"
     minlength="6"
-    autocomplete="new-password"
+   autocomplete="current-password"
     style="flex:1;"
   >
 
@@ -133,7 +133,7 @@ const supabaseClient = window.supabase.createClient(
   document.getElementById("connecter").addEventListener("click", async function () {
 
   const email = document.getElementById("email-connexion").value.trim();
-  const password = document.getElementById("password-connexion").value;
+ const password = document.getElementById("password-connexion").value;
   const message = document.getElementById("message-connexion");
 
   message.textContent = "";
