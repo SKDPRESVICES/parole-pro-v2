@@ -46,10 +46,10 @@ const supabaseClient = window.supabase.createClient(
     style="flex:1;"
   >
 
-  <button
-    type="button"
-    onclick="const p=document.getElementById('password'); p.type=p.type==='password'?'text':'password'; this.textContent=p.type==='password'?'Afficher':'Masquer';"
-  >Afficher</button>
+ <button
+  type="button"
+  onclick="const p=document.getElementById('password-connexion'); p.type=p.type==='password'?'text':'password'; this.textContent=p.type==='password'?'Afficher':'Masquer';"
+>Afficher</button>
 </div>
 
 <small>
@@ -57,7 +57,12 @@ const supabaseClient = window.supabase.createClient(
   Il doit être différent du mot de passe de votre adresse e-mail
   et contenir au moins 6 caractères.
 </small>
+<button class="btn" id="connecter" type="button">
+  Se connecter
+</button>
 
+<p id="message-connexion"></p>
+</section>
 <button class="btn" id="inscrire">Créer mon compte</button>
 
   <p id="message-inscription"></p>
