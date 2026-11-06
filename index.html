@@ -73,7 +73,7 @@ const supabaseClient = window.supabase.createClient(
 
 <div style="display:flex; gap:8px; align-items:center;">
   <input
-    id="password"
+    id="password-connexion"
     type="password"
     placeholder="Choisissez un mot de passe"
     minlength="6"
@@ -96,7 +96,7 @@ const supabaseClient = window.supabase.createClient(
  
   const nom = document.getElementById("nom").value.trim();
   const email = document.getElementById("email").value.trim();
-  const password = document.getElementById("password").value;
+  const password = document.getElementById('password-connexion')
   const message = document.getElementById("message-inscription");
 
   message.textContent = "";
