@@ -793,6 +793,10 @@ restaurerSession();
 supabaseClient.auth.onAuthStateChange(
   function (event, session) {
 
+    console.log("ÉVÉNEMENT AUTH :", event);
+    console.log("UTILISATEUR :", session?.user?.email || "Aucun");
+    console.log("SESSION :", !!session);
+
     afficherTableau(session);
 
   }
