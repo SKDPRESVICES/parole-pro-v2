@@ -833,11 +833,64 @@ supabaseClient.auth.onAuthStateChange(
 );
 
 
-// NOUVELLE FONCTION POUR OUVRIR LES MODULES
+
+// OUVRIR LES MODULES DE FORMATION
 
 function ouvrirModule(numero) {
 
-  alert("Ouverture du module " + numero);
+  const espace = document.getElementById("espace-cours");
+  const titre = document.getElementById("titre-cours");
+  const contenu = document.getElementById("contenu-cours");
+
+  const modules = {
+
+    1: {
+      titre: "Module 01 – Les fondamentaux",
+      lecon: "Découvrir les bases de la prise de parole en public."
+    },
+
+    2: {
+      titre: "Module 02 – Voix et présence",
+      lecon: "Maîtriser sa voix, sa posture et son langage corporel."
+    },
+
+    3: {
+      titre: "Module 03 – Discours convaincant",
+      lecon: "Construire un discours clair et persuasif."
+    },
+
+    4: {
+      titre: "Module 04 – Trac et improvisation",
+      lecon: "Gérer le stress et prendre la parole avec assurance."
+    }
+
+  };
+
+  const module = modules[numero];
+
+  if (!module) {
+    return;
+  }
+
+  titre.textContent = module.titre;
+
+  contenu.textContent = module.lecon;
+
+  espace.hidden = false;
+
+  espace.scrollIntoView({
+    behavior: "smooth",
+    block: "start"
+  });
+
+}
+
+
+// FERMER LE MODULE
+
+function fermerModule() {
+
+  document.getElementById("espace-cours").hidden = true;
 
 }
 
