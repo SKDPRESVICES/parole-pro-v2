@@ -836,6 +836,187 @@ supabaseClient.auth.onAuthStateChange(
 
 // OUVRIR LES MODULES DE FORMATION
 
+
+// CONTENU DES LEÇONS DU MODULE 01
+
+const leconsModule01 = [
+
+  {
+    titre: "Leçon 1 – Comprendre la prise de parole en public",
+    contenu: `
+      <h3>1. Définition</h3>
+      <p>La prise de parole en public est l'action de s'adresser oralement à une ou plusieurs personnes pour transmettre un message, partager une information, défendre une idée, convaincre ou mobiliser.</p>
+
+      <h3>2. Les différentes situations</h3>
+      <ul>
+        <li>Une réunion professionnelle.</li>
+        <li>Une formation ou une conférence.</li>
+        <li>Une cérémonie officielle.</li>
+        <li>Un débat ou une discussion publique.</li>
+        <li>Une assemblée communautaire.</li>
+        <li>Une présentation de projet.</li>
+      </ul>
+
+      <h3>3. Pourquoi apprendre à parler en public ?</h3>
+      <ul>
+        <li>Développer sa confiance en soi.</li>
+        <li>Exprimer clairement ses idées.</li>
+        <li>Convaincre et influencer positivement.</li>
+        <li>Défendre ses projets.</li>
+        <li>Développer son leadership.</li>
+      </ul>
+
+      <h3>4. Les qualités d'un bon orateur</h3>
+      <ul>
+        <li>La clarté.</li>
+        <li>La confiance.</li>
+        <li>La maîtrise de la voix.</li>
+        <li>Une bonne posture.</li>
+        <li>L'écoute du public.</li>
+        <li>La préparation.</li>
+        <li>L'adaptation à son auditoire.</li>
+      </ul>
+
+      <h3>5. Les obstacles</h3>
+      <p>La peur du jugement, le manque de confiance, la peur d'oublier son discours et le manque de préparation sont des difficultés fréquentes. Elles peuvent être surmontées par l'apprentissage et la pratique.</p>
+
+      <h3>6. Exercice pratique</h3>
+      <p>Présentez-vous pendant deux minutes devant un groupe. Parlez de votre nom, votre activité, vos centres d'intérêt et vos motivations pour apprendre à parler en public.</p>
+    `
+  },
+
+  {
+    titre: "Leçon 2 – Identifier les objectifs d'une intervention",
+    contenu: `
+      <h3>1. Pourquoi prendre la parole ?</h3>
+      <p>Avant toute intervention, il faut savoir précisément pourquoi on souhaite s'adresser à un public.</p>
+
+      <h3>2. Les principaux objectifs</h3>
+      <ul>
+        <li><strong>Informer :</strong> transmettre des informations.</li>
+        <li><strong>Expliquer :</strong> rendre un sujet compréhensible.</li>
+        <li><strong>Convaincre :</strong> faire adhérer à une idée.</li>
+        <li><strong>Mobiliser :</strong> encourager à agir.</li>
+        <li><strong>Sensibiliser :</strong> faire prendre conscience d'un problème.</li>
+        <li><strong>Former :</strong> transmettre des connaissances.</li>
+      </ul>
+
+      <h3>3. Exemple pratique</h3>
+      <p>Un responsable associatif qui organise une rencontre sur la protection de l'environnement peut chercher à sensibiliser les habitants et à les mobiliser pour une journée de nettoyage.</p>
+
+      <h3>4. Exercice</h3>
+      <p>Imaginez que vous devez prendre la parole devant les jeunes de votre commune pour présenter un projet. Identifiez les objectifs de votre intervention.</p>
+    `
+  },
+
+  {
+    titre: "Leçon 3 – Connaître et comprendre son public",
+    contenu: `
+      <h3>1. Pourquoi connaître son public ?</h3>
+      <p>Une intervention efficace doit être adaptée aux personnes qui écoutent. On ne s'adresse pas de la même manière à des enfants, des étudiants, des responsables ou des autorités.</p>
+
+      <h3>2. Les éléments à connaître</h3>
+      <ul>
+        <li>L'âge des participants.</li>
+        <li>Le niveau de connaissance du sujet.</li>
+        <li>Les attentes et les préoccupations.</li>
+        <li>La langue la mieux comprise.</li>
+        <li>Le contexte de la rencontre.</li>
+      </ul>
+
+      <h3>3. Adapter sa communication</h3>
+      <p>Il faut choisir un vocabulaire accessible, des exemples adaptés et un ton approprié.</p>
+
+      <h3>4. Exemple pratique</h3>
+      <p>Pour sensibiliser des enfants à l'hygiène, on privilégiera des explications simples, des illustrations et des jeux plutôt qu'un discours technique.</p>
+
+      <h3>5. Exercice</h3>
+      <p>Préparez un message de sensibilisation sur l'environnement destiné à des jeunes de votre commune. Comment allez-vous adapter votre langage ?</p>
+    `
+  },
+
+  {
+    titre: "Leçon 4 – Structurer une intervention efficacement",
+    contenu: `
+      <h3>1. Pourquoi structurer son discours ?</h3>
+      <p>Un discours bien organisé facilite la compréhension et permet au public de suivre facilement les idées présentées.</p>
+
+      <h3>2. Les trois grandes parties</h3>
+      <ul>
+        <li><strong>L'introduction :</strong> saluer, présenter le sujet et capter l'attention.</li>
+        <li><strong>Le développement :</strong> présenter les idées, les arguments et les exemples.</li>
+        <li><strong>La conclusion :</strong> rappeler l'essentiel et terminer par un message fort.</li>
+      </ul>
+
+      <h3>3. Les conseils pratiques</h3>
+      <ul>
+        <li>Préparer ses idées à l'avance.</li>
+        <li>Organiser les arguments dans un ordre logique.</li>
+        <li>Utiliser des exemples concrets.</li>
+        <li>Éviter les répétitions inutiles.</li>
+        <li>Respecter le temps prévu.</li>
+      </ul>
+
+      <h3>4. Exercice</h3>
+      <p>Préparez une intervention de trois minutes sur l'importance de l'engagement citoyen dans votre commune. Rédigez une introduction, deux idées principales et une conclusion.</p>
+    `
+  }
+
+];
+
+let leconActuelle = 0;
+
+
+// AFFICHER UNE LEÇON
+
+function afficherLecon(index) {
+
+  if (index < 0 || index >= leconsModule01.length) {
+    return;
+  }
+
+  leconActuelle = index;
+
+  const contenu = document.getElementById("contenu-cours");
+  const lecon = leconsModule01[index];
+
+  contenu.innerHTML = `
+
+    <h3>${lecon.titre}</h3>
+
+    <p><strong>Progression : Leçon ${index + 1} sur 4</strong></p>
+
+    ${lecon.contenu}
+
+    <hr>
+
+    <div style="display:flex; gap:10px; flex-wrap:wrap;">
+
+      ${index > 0 ? `
+        <button class="btn" type="button"
+          onclick="afficherLecon(${index - 1})">
+          Leçon précédente
+        </button>
+      ` : ""}
+
+      ${index < 3 ? `
+        <button class="btn" type="button"
+          onclick="afficherLecon(${index + 1})">
+          Leçon suivante
+        </button>
+      ` : `
+        <p><strong>Bravo ! Vous avez terminé les quatre leçons.</strong></p>
+      `}
+
+    </div>
+
+  `;
+
+}
+
+
+// OUVRIR UN MODULE
+
 function ouvrirModule(numero) {
 
   const espace = document.getElementById("espace-cours");
@@ -846,7 +1027,7 @@ function ouvrirModule(numero) {
 
     1: {
       titre: "Module 01 – Les fondamentaux",
-      lecon: "Découvrir les bases de la prise de parole en public."
+      lecon: ""
     },
 
     2: {
@@ -874,7 +1055,15 @@ function ouvrirModule(numero) {
 
   titre.textContent = module.titre;
 
-  contenu.textContent = module.lecon;
+  if (numero === 1) {
+
+    afficherLecon(0);
+
+  } else {
+
+    contenu.textContent = module.lecon;
+
+  }
 
   espace.hidden = false;
 
@@ -884,7 +1073,6 @@ function ouvrirModule(numero) {
   });
 
 }
-
 
 // FERMER LE MODULE
 
