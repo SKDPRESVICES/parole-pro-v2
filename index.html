@@ -811,10 +811,19 @@ supabaseClient.auth.onAuthStateChange(
     console.log("UTILISATEUR :", session?.user?.email || "Aucun");
     console.log("SESSION :", !!session);
 
-    afficherTableau(session);
+       afficherTableau(session);
 
   }
 );
+
+
+// NOUVELLE FONCTION POUR OUVRIR LES MODULES
+
+function ouvrirModule(numero) {
+
+  alert("Ouverture du module " + numero);
+
+}
 
 </script>
 
