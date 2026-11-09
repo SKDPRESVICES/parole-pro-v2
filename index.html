@@ -1171,15 +1171,19 @@ function ouvrirModule(numero) {
 
   titre.textContent = module.titre;
 
-  if (numero === 1) {
+if (numero === 1) {
 
-    afficherLecon(0);
+  afficherLecon(0);
 
-  } else {
+} else if (numero === 2) {
 
-    contenu.textContent = module.lecon;
+  afficherLeconModule02(0);
 
-  }
+} else {
+
+  contenu.textContent = module.lecon;
+
+}
 
   espace.hidden = false;
 
