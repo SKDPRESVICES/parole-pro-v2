@@ -1131,6 +1131,122 @@ function afficherLecon(index) {
 }
 
 
+ // LES LEÇONS DU MODULE 03
+
+const leconsModule03 = [
+
+  {
+    titre: "Leçon 1 – Organiser ses idées et structurer son discours",
+    contenu: `
+      <h4>Objectif pédagogique</h4>
+      <p>Apprendre à organiser ses idées pour construire un discours cohérent.</p>
+
+      <h4>Contenu de la leçon</h4>
+      <p>Un discours convaincant repose sur une bonne organisation des idées. Avant de prendre la parole, il faut définir son objectif, identifier son public et sélectionner les idées essentielles.</p>
+      <p>Un discours bien structuré comprend trois grandes parties : une introduction, un développement et une conclusion.</p>
+
+      <h4>Exercice pratique</h4>
+      <p>Choisissez un sujet qui vous intéresse et notez trois idées principales pour construire votre intervention.</p>
+    `
+  },
+
+  {
+    titre: "Leçon 2 – Réussir son introduction et capter l'attention",
+    contenu: `
+      <h4>Objectif pédagogique</h4>
+      <p>Savoir commencer un discours de manière intéressante.</p>
+
+      <h4>Contenu de la leçon</h4>
+      <p>L'introduction est un moment déterminant. Elle permet de capter l'attention du public et de présenter le sujet.</p>
+      <p>Pour commencer efficacement, vous pouvez utiliser une question pertinente, une anecdote, une citation ou un fait marquant.</p>
+
+      <h4>Exercice pratique</h4>
+      <p>Préparez trois introductions différentes sur le thème de l'engagement citoyen dans votre commune.</p>
+    `
+  },
+
+  {
+    titre: "Leçon 3 – Développer ses arguments et convaincre",
+    contenu: `
+      <h4>Objectif pédagogique</h4>
+      <p>Apprendre à défendre ses idées avec des arguments solides.</p>
+
+      <h4>Contenu de la leçon</h4>
+      <p>Pour convaincre, il ne suffit pas d'affirmer une opinion. Il faut expliquer ses idées, apporter des exemples concrets et utiliser des arguments adaptés à son public.</p>
+      <p>Un bon argument doit être clair, pertinent et compréhensible.</p>
+
+      <h4>Exercice pratique</h4>
+      <p>Défendez l'idée suivante : les jeunes doivent participer davantage au développement de leur commune. Présentez trois arguments accompagnés d'exemples.</p>
+    `
+  },
+
+  {
+    titre: "Leçon 4 – Réussir sa conclusion et marquer les esprits",
+    contenu: `
+      <h4>Objectif pédagogique</h4>
+      <p>Apprendre à terminer un discours de manière mémorable.</p>
+
+      <h4>Contenu de la leçon</h4>
+      <p>La conclusion permet de rappeler le message essentiel, de résumer les idées principales et de laisser une impression positive.</p>
+      <p>Elle peut se terminer par un appel à l'action, une question forte ou une invitation à la réflexion.</p>
+
+      <h4>Exercice pratique</h4>
+      <p>Rédigez une conclusion de deux minutes sur l'importance de l'engagement citoyen des jeunes dans votre commune.</p>
+    `
+  }
+
+];
+
+let leconActuelleModule03 = 0;
+
+
+// AFFICHER LES LEÇONS DU MODULE 03
+
+function afficherLeconModule03(index) {
+
+  if (index < 0 || index >= leconsModule03.length) {
+    return;
+  }
+
+  leconActuelleModule03 = index;
+
+  const contenu = document.getElementById("contenu-cours");
+  const lecon = leconsModule03[index];
+
+  contenu.innerHTML = `
+
+    <h3>${lecon.titre}</h3>
+
+    <p><strong>Progression : Leçon ${index + 1} sur 4</strong></p>
+
+    ${lecon.contenu}
+
+    <hr>
+
+    <div style="display:flex; gap:10px; flex-wrap:wrap;">
+
+      ${index > 0 ? `
+        <button class="btn" type="button"
+          onclick="afficherLeconModule03(${index - 1})">
+          Leçon précédente
+        </button>
+      ` : ""}
+
+      ${index < 3 ? `
+        <button class="btn" type="button"
+          onclick="afficherLeconModule03(${index + 1})">
+          Leçon suivante
+        </button>
+      ` : `
+        <p><strong>Bravo ! Vous avez terminé les quatre leçons du Module 03.</strong></p>
+      `}
+
+    </div>
+
+  `;
+
+}
+
 // OUVRIR UN MODULE
 
 function ouvrirModule(numero) {
