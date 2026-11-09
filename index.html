@@ -833,6 +833,122 @@ supabaseClient.auth.onAuthStateChange(
 );
 
 
+// LES LEÇONS DU MODULE 02
+
+const leconsModule02 = [
+
+  {
+    titre: "Leçon 1 – Comprendre et maîtriser sa voix",
+    contenu: `
+      <h4>Objectif pédagogique</h4>
+      <p>Comprendre le rôle de la voix dans la prise de parole en public.</p>
+
+      <h4>Contenu de la leçon</h4>
+      <p>La voix est un instrument essentiel de communication. Elle permet de transmettre nos idées, nos émotions et notre personnalité.</p>
+      <p>Une bonne prise de parole nécessite une voix claire, audible et adaptée à son public.</p>
+
+      <h4>Exercice pratique</h4>
+      <p>Présentez-vous pendant une minute en veillant à parler clairement et suffisamment fort.</p>
+    `
+  },
+
+  {
+    titre: "Leçon 2 – La respiration et la gestion du souffle",
+    contenu: `
+      <h4>Objectif pédagogique</h4>
+      <p>Apprendre à contrôler sa respiration pour mieux parler.</p>
+
+      <h4>Contenu de la leçon</h4>
+      <p>La respiration est fondamentale pour maîtriser sa voix. Une bonne gestion du souffle permet de parler sans précipitation et de terminer ses phrases correctement.</p>
+      <p>Avant une intervention, prenez quelques inspirations lentes et profondes.</p>
+
+      <h4>Exercice pratique</h4>
+      <p>Inspirez lentement, puis expirez doucement. Répétez trois fois avant de lire un texte à haute voix.</p>
+    `
+  },
+
+  {
+    titre: "Leçon 3 – L'intonation, le débit et l'articulation",
+    contenu: `
+      <h4>Objectif pédagogique</h4>
+      <p>Améliorer la manière de prononcer et de transmettre un message.</p>
+
+      <h4>Contenu de la leçon</h4>
+      <p>L'intonation donne du relief à la parole. Le débit correspond à la vitesse d'élocution. L'articulation permet de prononcer distinctement les mots.</p>
+      <p>Il faut éviter de parler trop vite, de garder toujours le même ton ou de manger les mots.</p>
+
+      <h4>Exercice pratique</h4>
+      <p>Lisez un paragraphe à haute voix en variant votre intonation et en articulant chaque mot.</p>
+    `
+  },
+
+  {
+    titre: "Leçon 4 – La posture et le langage corporel",
+    contenu: `
+      <h4>Objectif pédagogique</h4>
+      <p>Maîtriser sa posture et utiliser efficacement son corps pour communiquer.</p>
+
+      <h4>Contenu de la leçon</h4>
+      <p>La communication ne passe pas uniquement par les mots. La posture, les gestes, le regard et les expressions du visage renforcent le message.</p>
+      <p>Une posture droite, un regard attentif et des gestes naturels renforcent la confiance du public.</p>
+
+      <h4>Exercice pratique</h4>
+      <p>Présentez un sujet pendant deux minutes devant un miroir. Observez votre posture, votre regard et vos gestes.</p>
+    `
+  }
+
+];
+
+let leconActuelleModule02 = 0;
+
+
+// AFFICHER LES LEÇONS DU MODULE 02
+
+function afficherLeconModule02(index) {
+
+  if (index < 0 || index >= leconsModule02.length) {
+    return;
+  }
+
+  leconActuelleModule02 = index;
+
+  const contenu = document.getElementById("contenu-cours");
+  const lecon = leconsModule02[index];
+
+  contenu.innerHTML = `
+
+    <h3>${lecon.titre}</h3>
+
+    <p><strong>Progression : Leçon ${index + 1} sur 4</strong></p>
+
+    ${lecon.contenu}
+
+    <hr>
+
+    <div style="display:flex; gap:10px; flex-wrap:wrap;">
+
+      ${index > 0 ? `
+        <button class="btn" type="button"
+          onclick="afficherLeconModule02(${index - 1})">
+          Leçon précédente
+        </button>
+      ` : ""}
+
+      ${index < 3 ? `
+        <button class="btn" type="button"
+          onclick="afficherLeconModule02(${index + 1})">
+          Leçon suivante
+        </button>
+      ` : `
+        <p><strong>Bravo ! Vous avez terminé les quatre leçons du Module 02.</strong></p>
+      `}
+
+    </div>
+
+  `;
+
+}
+
 
 // OUVRIR LES MODULES DE FORMATION
 
