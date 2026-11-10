@@ -1537,6 +1537,55 @@ if (numero === 1) {
 
 }
 
+  
+let leconActuelleModule04 = 0;
+
+function afficherLeconModule04(index) {
+
+  if (index < 0 || index >= leconsModule04.length) {
+    return;
+  }
+
+  leconActuelleModule04 = index;
+
+  const contenu = document.getElementById("contenu-cours");
+  const lecon = leconsModule04[index];
+
+  contenu.innerHTML = `
+
+    <h3>${lecon.titre}</h3>
+
+    <p><strong>Progression : Leçon ${index + 1} sur 4</strong></p>
+
+    ${lecon.contenu}
+
+    <hr>
+
+    <div style="display:flex; gap:10px; flex-wrap:wrap;">
+
+      ${index > 0 ? `
+        <button class="btn" type="button"
+          onclick="afficherLeconModule04(${index - 1})">
+          Leçon précédente
+        </button>
+      ` : ""}
+
+      ${index < 3 ? `
+        <button class="btn" type="button"
+          onclick="afficherLeconModule04(${index + 1})">
+          Leçon suivante
+        </button>
+      ` : `
+        <p><strong>Bravo ! Vous avez terminé les quatre leçons du Module 04.</strong></p>
+      `}
+
+    </div>
+
+  `;
+
+}
+
+
 // FERMER LE MODULE
 
 function fermerModule() {
