@@ -1527,7 +1527,8 @@ sauvegarderProgression(3, index + 1, index > 0);
 
 // OUVRIR UN MODULE
 
-function ouvrirModule(numero) {
+
+async function ouvrirModule(numero) {
 
   const espace = document.getElementById("espace-cours");
   const titre = document.getElementById("titre-cours");
@@ -1565,28 +1566,6 @@ function ouvrirModule(numero) {
 
   titre.textContent = module.titre;
 
-if (numero === 1) {
-
-  afficherLecon(0);
-
-} else if (numero === 2) {
-
-  afficherLeconModule02(0);
-
-} else if (numero === 3) {
-
-  afficherLeconModule03(0);
-
-} else if (numero === 4) {
-
-  afficherLeconModule04(0);
-
-} else {
-
-  contenu.textContent = module.lecon;
-
-}
-
   espace.hidden = false;
 
   espace.scrollIntoView({
@@ -1594,9 +1573,82 @@ if (numero === 1) {
     block: "start"
   });
 
+  const leconsParModule = {
+    1: leconsModule01,
+    2: leconsModule02,
+    3: leconsModule03,
+    4: leconsModule04
+  };
+
+  let indexLecon = 0;
+
+  try {
+
+    const { data: sessionData, error: sessionError } =
+      await supabaseClient.auth.getSession();
+
+    if (sessionError) throw sessionError;
+
+    const session = sessionData.session;
+
+    if (session) {
+
+      const { data: progression, error: progressionError } =
+        await supabaseClient
+          .from("MODULE_PROGRESS")
+          .select("last_lesson")
+          .eq("user_id", session.user.id)
+          .eq("module_id", numero)
+          .maybeSingle();
+
+      if (progressionError) throw progressionError;
+
+      if (progression && progression.last_lesson > 0) {
+
+        indexLecon = Math.min(
+          progression.last_lesson,
+          leconsParModule[numero].length
+        ) - 1;
+
+      }
+
+    }
+
+  } catch (error) {
+
+    console.error("Erreur de récupération :", error);
+
+    contenu.textContent =
+      "Impossible de récupérer votre progression. Veuillez réessayer.";
+
+    return;
+
+  }
+
+  if (numero === 1) {
+
+    afficherLecon(indexLecon);
+
+  } else if (numero === 2) {
+
+    afficherLeconModule02(indexLecon);
+
+  } else if (numero === 3) {
+
+    afficherLeconModule03(indexLecon);
+
+  } else if (numero === 4) {
+
+    afficherLeconModule04(indexLecon);
+
+  } else {
+
+    contenu.textContent = module.lecon;
+
+  }
+
 }
 
-  
 let leconActuelleModule04 = 0;
 
 function afficherLeconModule04(index) {
