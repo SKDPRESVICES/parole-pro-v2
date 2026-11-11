@@ -502,6 +502,65 @@ const supabaseClient = window.supabase.createClient(
 );
 
 
+async function sauvegarderProgression(moduleId, numeroLecon, leconTerminee = false) {
+
+  try {
+
+    const { data: sessionData, error: sessionError } =
+      await supabaseClient.auth.getSession();
+
+    if (sessionError) throw sessionError;
+
+    const session = sessionData.session;
+
+    if (!session) return;
+
+    const userId = session.user.id;
+
+    const { data: ancienneProgression, error: lectureError } =
+      await supabaseClient
+        .from("MODULE_PROGRESS")
+        .select("completed_lessons")
+        .eq("user_id", userId)
+        .eq("module_id", moduleId)
+        .maybeSingle();
+
+    if (lectureError) throw lectureError;
+
+    const leconsTerminees = [
+      ...(ancienneProgression?.completed_lessons || [])
+    ];
+
+    if (leconTerminee && !leconsTerminees.includes(numeroLecon - 1)) {
+      leconsTerminees.push(numeroLecon - 1);
+    }
+
+    const { error: sauvegardeError } =
+      await supabaseClient
+        .from("MODULE_PROGRESS")
+        .upsert({
+          user_id: userId,
+          module_id: moduleId,
+          last_lesson: numeroLecon,
+          completed_lessons: leconsTerminees,
+          updated_at: new Date().toISOString()
+        }, {
+          onConflict: "user_id,module_id"
+        });
+
+    if (sauvegardeError) throw sauvegardeError;
+
+    console.log("Progression sauvegardée.");
+
+  } catch (error) {
+
+    console.error("Erreur de sauvegarde :", error);
+
+  }
+
+}
+
+
 // GENERATEUR DE TRAME
 document.getElementById("generer").addEventListener("click", function () {
 
