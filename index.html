@@ -1151,7 +1151,7 @@ function afficherLecon(index) {
   }
 
   leconActuelle = index;
-
+sauvegarderProgression(1, index + 1, index > 0);
   const contenu = document.getElementById("contenu-cours");
   const lecon = leconsModule01[index];
 
