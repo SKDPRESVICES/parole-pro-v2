@@ -1602,7 +1602,7 @@ console.log("SESSION AU MOMENT DE L'OUVERTURE :", session);
           .maybeSingle();
 
       if (progressionError) throw progressionError;
-console.log("PROGRESSION RÉCUPÉRÉE :", progression);
+console.log("DERNIÈRE LEÇON RÉCUPÉRÉE :", progression?.last_lesson);
       if (progression && progression.last_lesson > 0) {
 
         indexLecon = Math.min(
