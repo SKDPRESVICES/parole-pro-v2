@@ -1753,10 +1753,59 @@ sauvegarderProgression(4, index + 1, index > 0);
 
 
 // FERMER LE MODULE
-
 function fermerModule() {
 
   document.getElementById("espace-cours").hidden = true;
+
+}
+// CHARGER LES PAIEMENTS POUR L'ADMINISTRATEUR
+
+async function chargerPaiements() {
+
+  const liste = document.getElementById("liste-paiements");
+  const message = document.getElementById("message-admin");
+
+  liste.innerHTML = "";
+  message.textContent = "Chargement des paiements...";
+
+  try {
+
+    const { data, error } = await supabaseClient
+      .from("admin_payment_overview")
+      .select("*")
+      .order("created_at", { ascending: false });
+
+    if (error) throw error;
+
+    if (!data || data.length === 0) {
+      message.textContent = "Aucun paiement enregistré pour le moment.";
+      return;
+    }
+
+    message.textContent = data.length + " paiement(s) trouvé(s).";
+
+    data.forEach((paiement) => {
+
+      const bloc = document.createElement("div");
+      bloc.className = "panel";
+
+      bloc.textContent =
+        "Apprenant : " + (paiement.full_name || "Nom non disponible") +
+        " | Type : " + paiement.payment_type +
+        " | Montant : " + paiement.amount + " FCFA" +
+        " | Statut : " + paiement.payment_status +
+        " | Date : " + (paiement.payment_date || "Non renseignée");
+
+      liste.appendChild(bloc);
+
+    });
+
+  } catch (error) {
+
+    console.error("Erreur de chargement des paiements :", error);
+    message.textContent = "Erreur lors du chargement des paiements.";
+
+  }
 
 }
 
