@@ -684,6 +684,7 @@ configurerAffichage(
 );
 
 
+
 // AFFICHAGE DU TABLEAU DE BORD
 function afficherTableau(session) {
 
@@ -691,21 +692,33 @@ function afficherTableau(session) {
 
     const utilisateur = session.user;
 
-    const nom =
-      utilisateur.user_metadata?.full_name ||
-      utilisateur.email ||
-      "Apprenant";
-
-    document.getElementById("nom-apprenant").textContent =
-      "Bienvenue, " + nom;
-
     inscription.hidden = true;
     connexion.hidden = true;
-    tableau.hidden = false;
+
+    if (utilisateur.email === "skdpresvices@gmail.com") {
+
+      tableau.hidden = true;
+      espaceAdmin.hidden = false;
+
+    } else {
+
+      const nom =
+        utilisateur.user_metadata?.full_name ||
+        utilisateur.email ||
+        "Apprenant";
+
+      document.getElementById("nom-apprenant").textContent =
+        "Bienvenue, " + nom;
+
+      espaceAdmin.hidden = true;
+      tableau.hidden = false;
+
+    }
 
   } else {
 
     tableau.hidden = true;
+    espaceAdmin.hidden = true;
     inscription.hidden = false;
     connexion.hidden = false;
 
