@@ -908,7 +908,39 @@ document.getElementById("deconnexion").addEventListener(
 
   }
 );
+// DECONNEXION ADMINISTRATEUR
+document.getElementById("deconnexion-admin").addEventListener(
+  "click", async function () {
 
+    this.disabled = true;
+
+    try {
+
+      const { error } =
+        await supabaseClient.auth.signOut();
+
+      if (error) throw error;
+
+      afficherTableau(null);
+
+      messageConnexion.textContent =
+        "Vous êtes déconnecté de votre espace.";
+
+      messageAdmin.textContent = "";
+
+    } catch (error) {
+
+      messageAdmin.textContent =
+        "Erreur lors de la déconnexion : " + error.message;
+
+    } finally {
+
+      this.disabled = false;
+
+    }
+
+  }
+);
 
 // RESTAURATION DE LA SESSION
 async function restaurerSession() {
