@@ -1943,7 +1943,16 @@ async function chargerPaiements() {
         " | Montant : " + paiement.amount + " FCFA" +
         " | Statut : " + paiement.payment_status +
         " | Date : " + (paiement.payment_date || "Non renseignée");
+      if (paiement.payment_status === "en_attente") {
 
+        const boutonConfirmer = document.createElement("button");
+
+        boutonConfirmer.className = "btn";
+        boutonConfirmer.textContent = "Confirmer le paiement";
+
+        bloc.appendChild(boutonConfirmer);
+
+      }
       liste.appendChild(bloc);
 
     });
