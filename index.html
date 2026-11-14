@@ -1985,7 +1985,9 @@ async function chargerPaiements() {
 
         boutonConfirmer.className = "btn";
         boutonConfirmer.textContent = "Confirmer le paiement";
-
+boutonConfirmer.addEventListener("click", () => {
+  confirmerPaiement(paiement.payment_id);
+});
         bloc.appendChild(boutonConfirmer);
 
       }
