@@ -1906,6 +1906,42 @@ async function enregistrerPaiement() {
   }
 
 }
+  // CONFIRMER UN PAIEMENT
+
+async function confirmerPaiement(id) {
+
+  const confirmation = confirm(
+    "Avez-vous vérifié la réception réelle de ce paiement ?"
+  );
+
+  if (!confirmation) return;
+
+  try {
+
+    const { error } = await supabaseClient
+      .from("PAYMENTS")
+      .update({
+        payment_status: "confirme",
+        payment_date: new Date().toISOString().slice(0, 10)
+      })
+      .eq("id", id)
+      .eq("payment_status", "en_attente");
+
+    if (error) throw error;
+
+    alert("Paiement confirmé avec succès.");
+
+    await chargerPaiements();
+
+  } catch (error) {
+
+    console.error("Erreur de confirmation :", error);
+
+    alert("Erreur lors de la confirmation : " + error.message);
+
+  }
+
+}
 // CHARGER LES PAIEMENTS POUR L'ADMINISTRATEUR
 
 async function chargerPaiements() {
