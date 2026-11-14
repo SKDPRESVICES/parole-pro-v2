@@ -1840,6 +1840,72 @@ function fermerModule() {
   document.getElementById("espace-cours").hidden = true;
 
 }
+  // ENREGISTRER UN PAIEMENT
+
+async function enregistrerPaiement() {
+
+  const userId = document.getElementById("paiement-user-id").value.trim();
+  const type = document.getElementById("paiement-type").value;
+  const montant = Number(document.getElementById("paiement-montant").value);
+  const date = document.getElementById("paiement-date").value;
+  const periode = document.getElementById("paiement-periode").value;
+  const methode = document.getElementById("paiement-methode").value;
+  const reference = document.getElementById("paiement-reference").value.trim();
+  const message = document.getElementById("message-enregistrement");
+
+  message.textContent = "";
+
+  if (!userId || !montant || montant <= 0) {
+    message.textContent = "Veuillez renseigner l'identifiant et un montant valide.";
+    return;
+  }
+
+  if (type === "abonnement" && !periode) {
+    message.textContent = "Veuillez indiquer le mois concerné.";
+    return;
+  }
+
+  if (type === "inscription" && periode) {
+    message.textContent = "Les frais d'inscription ne nécessitent pas de période.";
+    return;
+  }
+
+  message.textContent = "Enregistrement en cours...";
+
+  try {
+
+    const { error } = await supabaseClient
+      .from("PAYMENTS")
+      .insert({
+        user_id: userId,
+        payment_type: type,
+        amount: montant,
+        payment_date: date || null,
+        payment_status: "en_attente",
+        billing_period: type === "abonnement" ? periode : null,
+        payment_method: methode,
+        reference: reference || null
+      });
+
+    if (error) throw error;
+
+    message.textContent =
+      "Paiement enregistré en attente de vérification.";
+
+    document.getElementById("paiement-user-id").value = "";
+    document.getElementById("paiement-montant").value = "";
+    document.getElementById("paiement-date").value = "";
+    document.getElementById("paiement-periode").value = "";
+    document.getElementById("paiement-reference").value = "";
+
+  } catch (error) {
+
+    console.error("Erreur d'enregistrement :", error);
+    message.textContent = "Erreur : " + error.message;
+
+  }
+
+}
 // CHARGER LES PAIEMENTS POUR L'ADMINISTRATEUR
 
 async function chargerPaiements() {
