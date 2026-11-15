@@ -1816,7 +1816,29 @@ async function ouvrirModule(numero) {
   if (!module) {
     return;
   }
+  try {
+    const { data: sessionData } =
+      await supabaseClient.auth.getSession();
 
+    const session = sessionData.session;
+
+    if (!session) {
+      alert("Veuillez vous connecter pour accéder à cette formation.");
+      return;
+    }
+
+    const acces = await verifierAccesModule(numero, session.user.id);
+
+    if (!acces.autorise) {
+      alert(acces.message);
+      return;
+    }
+
+  } catch (error) {
+    console.error("Erreur de vérification des accès :", error);
+    alert("Impossible de vérifier vos droits d'accès. Veuillez réessayer.");
+    return;
+  }
   titre.textContent = module.titre;
 
   espace.hidden = false;
