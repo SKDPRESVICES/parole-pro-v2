@@ -1661,7 +1661,123 @@ sauvegarderProgression(3, index + 1, index > 0);
   `;
 
 }
+// VÉRIFIER LES DROITS D'ACCÈS AUX MODULES
 
+async function verifierAccesModule(numero, userId) {
+  // Vérifier la session et l'administrateur.
+  const { data: sessionData, error: sessionError } =
+    await supabaseClient.auth.getSession();
+
+  if (sessionError) throw sessionError;
+
+  const session = sessionData.session;
+
+  if (!session || session.user.id !== userId) {
+    return {
+      autorise: false,
+      message: "Veuillez vous connecter pour accéder à cette formation."
+    };
+  }
+
+  if (session.user.email === "skdpresvices@gmail.com") {
+    return { autorise: true };
+  }
+
+  // Vérifier l'inscription confirmée.
+  const { data: inscription, error: erreurInscription } =
+    await supabaseClient
+      .from("PAYMENTS")
+      .select("id")
+      .eq("user_id", userId)
+      .eq("payment_type", "inscription")
+      .eq("payment_status", "confirme")
+      .limit(1);
+
+  if (erreurInscription) throw erreurInscription;
+
+  if (!inscription || inscription.length === 0) {
+    return {
+      autorise: false,
+      message: "Votre inscription n'est pas encore confirmée."
+    };
+  }
+
+  // L'inscription donne accès au Module 01.
+  if (numero === 1) {
+    return { autorise: true };
+  }
+
+  // Récupérer la date réelle d'inscription.
+  const { data: profil, error: erreurProfil } =
+    await supabaseClient
+      .from("profiles")
+      .select("created_at")
+      .eq("user_id", userId)
+      .maybeSingle();
+
+  if (erreurProfil) throw erreurProfil;
+
+  if (!profil || !profil.created_at) {
+    return {
+      autorise: false,
+      message: "Date d'inscription introuvable. Contactez l'administration."
+    };
+  }
+
+  const dateInscription = new Date(profil.created_at);
+
+  // Récupérer les mensualités confirmées.
+  const { data: mensualites, error: erreurMensualites } =
+    await supabaseClient
+      .from("PAYMENTS")
+      .select("billing_period")
+      .eq("user_id", userId)
+      .eq("payment_type", "abonnement")
+      .eq("payment_status", "confirme");
+
+  if (erreurMensualites) throw erreurMensualites;
+
+  // Déterminer le nombre de mensualités nécessaires.
+  const mensualitesNecessaires = {
+    2: 2,
+    3: 3,
+    4: 3
+  };
+
+  const nombreNecessaire = mensualitesNecessaires[numero];
+
+  if (!nombreNecessaire) {
+    return {
+      autorise: false,
+      message: "Module non reconnu."
+    };
+  }
+
+  // Vérifier chaque période dans l'ordre.
+  for (let i = 1; i <= nombreNecessaire; i++) {
+    const periodeAttendue = new Date(
+      Date.UTC(
+        dateInscription.getUTCFullYear(),
+        dateInscription.getUTCMonth() + i,
+        1
+      )
+    ).toISOString().slice(0, 10);
+
+    const payee = mensualites.some(
+      paiement => paiement.billing_period === periodeAttendue
+    );
+
+    if (!payee) {
+      return {
+        autorise: false,
+        message:
+          "L'accès à ce module nécessite la confirmation de vos mensualités précédentes."
+      };
+    }
+  }
+
+  return { autorise: true };
+}
 // OUVRIR UN MODULE
 
 
