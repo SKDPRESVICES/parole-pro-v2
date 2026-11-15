@@ -773,10 +773,77 @@ function afficherTableau(session) {
 
   }
 
+
+}
+
+
+// CHARGER LA SITUATION FINANCIÈRE DE L'APPRENANT
+
+async function chargerStatutPaiement(userId) {
+
+  const element = document.getElementById("statut-paiement");
+
+  if (!element) return;
+
+  element.textContent = "Chargement de votre situation financière...";
+
+  try {
+
+    const { data, error } = await supabaseClient
+      .from("PAYMENTS")
+      .select("payment_type, amount, payment_status, payment_date, billing_period, created_at")
+      .eq("user_id", userId)
+      .order("created_at", { ascending: false });
+
+    if (error) throw error;
+
+    if (!data || data.length === 0) {
+      element.textContent = "Aucun paiement enregistré pour le moment.";
+      return;
+    }
+
+    const lignes = data.map(paiement => {
+
+      const type =
+        paiement.payment_type === "inscription"
+          ? "Frais d'inscription"
+          : "Abonnement mensuel";
+
+      const statut =
+        paiement.payment_status === "confirme"
+          ? "Confirmé"
+          : "En attente de vérification";
+
+      const periode = paiement.billing_period
+        ? " | Mois : " + new Date(
+            paiement.billing_period + "T00:00:00"
+          ).toLocaleDateString("fr-FR", {
+            month: "long",
+            year: "numeric"
+          })
+        : "";
+
+      return type + " : " +
+        paiement.amount + " FCFA | Statut : " +
+        statut + periode;
+
+    });
+
+    element.textContent = lignes.join(" ; ");
+
+  } catch (error) {
+
+    console.error("Erreur de chargement des paiements :", error);
+
+    element.textContent =
+      "Impossible de charger votre situation financière. Veuillez réessayer.";
+
+  }
 }
 
 
 // INSCRIPTION
+N
 document.getElementById("inscrire").addEventListener(
   "click", async function () {
 
