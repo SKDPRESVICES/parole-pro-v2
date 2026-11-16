@@ -2088,7 +2088,7 @@ async function enregistrerPaiement() {
         amount: montant,
         payment_date: date || null,
         payment_status: "en_attente",
-        billing_period: type === "abonnement" ? periode : null,
+        billing_period: type === "abonnement" ? periode + "-01" : null,
         payment_method: methode,
         reference: reference || null
       });
