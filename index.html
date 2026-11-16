@@ -2194,8 +2194,9 @@ async function chargerPaiements() {
   : "";
       bloc.textContent =
         "Apprenant : " + (paiement.full_name || "Nom non disponible") +
-        " | Type : " + paiement.payment_type +
-        " | Montant : " + paiement.amount + " FCFA" +
+       " | Type : " + paiement.payment_type +
+(mois ? " | Mois concerné : " + mois : "") +
+" | Montant : " + paiement.amount + " FCFA" +
         " | Statut : " + paiement.payment_status +
         " | Date : " + (paiement.payment_date || "Non renseignée");
       if (paiement.payment_status === "en_attente") {
