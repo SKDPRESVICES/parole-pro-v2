@@ -2060,6 +2060,12 @@ async function enregistrerPaiement() {
     return;
   }
 
+  if (montant !== 5000) {
+    message.textContent =
+      "Le montant doit être exactement de 5 000 FCFA.";
+    return;
+  }
+
   if (type === "abonnement" && !periode) {
     message.textContent = "Veuillez indiquer le mois concerné.";
     return;
