@@ -2053,7 +2053,13 @@ async function enregistrerPaiement() {
   const reference = document.getElementById("paiement-reference").value.trim();
   const message = document.getElementById("message-enregistrement");
 
-  message.textContent = "";
+   message.textContent = "";
+
+  if (!userId || !montant || montant <= 0) {
+    message.textContent = "Veuillez renseigner l'identifiant et un montant valide.";
+    return;
+  }
+
   const formatUUID =
     /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 
@@ -2062,17 +2068,12 @@ async function enregistrerPaiement() {
       "L'identifiant de l'apprenant est invalide. Vérifiez son UUID.";
     return;
   }
-  if (!userId || !montant || montant <= 0) {
-    message.textContent = "Veuillez renseigner l'identifiant et un montant valide.";
-    return;
-  }
 
   if (montant !== 5000) {
     message.textContent =
       "Le montant doit être exactement de 5 000 FCFA.";
     return;
   }
-
   if (type === "abonnement" && !periode) {
     message.textContent = "Veuillez indiquer le mois concerné.";
     return;
