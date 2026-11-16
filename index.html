@@ -2185,7 +2185,13 @@ async function chargerPaiements() {
 
       const bloc = document.createElement("div");
       bloc.className = "panel";
-
+      const mois = paiement.billing_period
+  ? new Date(paiement.billing_period + "T00:00:00")
+      .toLocaleDateString("fr-FR", {
+        month: "long",
+        year: "numeric"
+      })
+  : "";
       bloc.textContent =
         "Apprenant : " + (paiement.full_name || "Nom non disponible") +
         " | Type : " + paiement.payment_type +
